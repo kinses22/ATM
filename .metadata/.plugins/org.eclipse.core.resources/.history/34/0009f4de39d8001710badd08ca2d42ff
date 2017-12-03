@@ -1,0 +1,28 @@
+import java.io.*;
+
+public class FileWriting {
+
+	static String hello = "Hello World";
+	
+	public static void main(String[] args) throws Exception{
+	
+		
+		File f = new File("C:/Users/Stephen/Desktop/ATM/newfile.txt");
+		if(f.exists()){
+			
+		}else{
+			try{
+				f.createNewFile();
+			}catch(Exception e){
+				System.out.print(e);
+			}
+		}
+		
+		FileWriter fw = new FileWriter(f);
+		BufferedWriter bw = new BufferedWriter(fw);
+		bw.write(hello); 
+		bw.close();
+		
+	}
+
+}

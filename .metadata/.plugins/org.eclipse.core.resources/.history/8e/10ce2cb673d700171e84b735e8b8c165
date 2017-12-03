@@ -1,0 +1,40 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class ATM {
+	
+	public static int pin = 9999;
+	
+	public static boolean checkPassWord(int p, int x){
+		if(p == x)
+		{return false;}
+		else
+		{return true;}
+	} 
+	
+	public static void main(String[] args) {
+		
+	 int passCode;	
+	 Scanner scan = new Scanner(System.in);
+	 boolean x = true;
+	 
+	 System.out.println("Welcome to the Bank of Joice");
+	 
+	 while (x){	 
+		 System.out.print("Please enter in your 4 digit customer ID: ");
+		 passCode = scan.nextInt();
+		 boolean y = checkPassWord(passCode, pin);
+		 x = y;
+	 }
+	 
+	 x = true;
+	 while(x){
+		 System.out.println("Please select one of the following options: ");
+		 System.out.printf(" 1 - Account Balance  %n"
+		 				 + " 2 - WithDrawl %n" 
+		 				 + " 3 - Change CustomerPin %n"
+		 				 + " 4 - Check Stock Prices %n"
+		 				 + " 5 - Logout %n");
+	 }
+	}
+}

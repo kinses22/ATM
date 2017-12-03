@@ -1,0 +1,23 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+public class FileFunctionality {
+	
+	public static void main(String[] args) throws Exception {
+		FileReader file = new FileReader("C:/Users/Stephen/Desktop/ATM/ATM.txt");
+		BufferedReader br = new BufferedReader(file);
+		
+		String txt = "";
+		String line = br.readLine();
+		
+		while(line != null){
+			
+			txt += line;
+			//line = br.readLine();
+			
+		}
+		//br.close();
+		
+		System.out.println(txt);
+	}
+}

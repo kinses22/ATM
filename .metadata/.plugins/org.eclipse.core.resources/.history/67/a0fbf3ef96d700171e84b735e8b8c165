@@ -1,0 +1,35 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.*;
+public class Stocks {
+
+	private ArrayList<String> getStocks() throws Exception{
+		FileReader file = new FileReader("Stocks.txt");
+		BufferedReader br = new BufferedReader(file);
+		
+		String txt = "";
+		ArrayList<String> StockArray = new ArrayList<>();
+		String line = br.readLine();
+
+		while(line != null){
+			
+			txt += line;
+			line = br.readLine();
+			StockArray.add(txt);
+			txt = "";
+		}
+		br.close();	
+		return StockArray;
+		
+	}
+	
+	public void loadStocks() throws Exception{
+		ArrayList<String> stocks = getStocks();
+		
+		
+			System.out.println(stocks);
+		
+	}
+	
+	
+}

@@ -1,0 +1,89 @@
+import java.io.*;
+
+public class Customers {
+	
+	
+	private int pin;
+	private String name;
+	private int accountAmount;
+	
+	private void populateCustomer(String[] details){
+		
+		pin = Integer.parseInt(details[0]);
+		name = details[1];
+		accountAmount = Integer.parseInt(details[2]);
+		
+	}
+	
+	public String[] customerInfo(FileReader file) throws Exception{
+		BufferedReader br = new BufferedReader(file);
+		String line = br.readLine();
+		String txt = "";
+		String[] txtArray = {};
+		while(line != null){
+			
+			txt += line;
+			line = br.readLine();	
+		}
+		br.close();
+		txtArray = txt.split(" ");
+		return txtArray;
+	}
+	
+	public boolean checkCustomerPin(int pin) throws Exception {
+		FileReader file1 = new FileReader("Joice.txt");
+		FileReader file2 = new FileReader("Stephen.txt");
+		
+		FileReader[] files = {file1, file2};
+		
+	f:	for(FileReader f: files){
+		
+		String[] custInfo = customerInfo(f);
+		int x = Integer.parseInt(custInfo[0]);
+		if(pin==x){
+			populateCustomer(custInfo);
+			return false;
+		}else{
+			continue f;
+		}
+		}
+		return true;
+		
+	}
+
+	public void save() throws Exception{
+		
+		File f = new File(name + ".txt");
+		FileWriter fw = new FileWriter(f);
+		BufferedWriter bw = new BufferedWriter(fw);
+		bw.write(pin + " " + name + " " + accountAmount); 
+		bw.close();
+		
+	}
+	
+	public int getPin() {
+		return pin;
+	}
+
+	public void setPin(int pin) {
+		this.pin = pin;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public int getAccountAmount() {
+		return accountAmount;
+	}
+
+	public void withdrawAmount(int accountAmount) {
+		if(accountAmount > this.accountAmount){
+			System.out.println("Sorry you have insufficient funds");
+		}else{
+		this.accountAmount -= accountAmount;
+		}
+	}
+	
+	
+}

@@ -1,0 +1,35 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+public class Stocks {
+
+	private String[] getStocks() throws Exception{
+		FileReader file = new FileReader("Stocks.txt");
+		BufferedReader br = new BufferedReader(file);
+		
+		String txt = "";
+		String[] StockArray = {};
+		String line = br.readLine();
+		int counter = 0;
+		while(line != null){
+			
+			txt += line;
+			line = br.readLine();
+			StockArray[counter] = txt;
+			counter++;
+		}
+		br.close();	
+		return StockArray;
+		
+	}
+	
+	public void loadStocks() throws Exception{
+		String[] stocks = getStocks();
+		
+		for(String s : stocks){
+			System.out.println(s);
+		}
+	}
+	
+	
+}

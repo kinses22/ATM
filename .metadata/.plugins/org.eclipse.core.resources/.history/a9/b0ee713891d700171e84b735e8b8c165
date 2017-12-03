@@ -1,0 +1,59 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class ATM {
+		
+	public static void ATMOptions(){
+		 System.out.printf(" 1 - Account Balance  %n"
+ 				 + " 2 - WithDrawl %n" 
+ 				 + " 3 - Change CustomerPin %n"
+ 				 + " 4 - Check Stock Prices %n"
+ 				 + " 5 - Logout %n");
+	}
+	
+	public static void main(String[] args) throws Exception {
+		
+	 int passCode;	
+	 int option;
+	 int amount;
+	 boolean x = true;
+	 Scanner scan = new Scanner(System.in);
+	 Customers customer = new Customers();
+	 
+	 
+	 System.out.println("Welcome to the Bank of Joice");
+	 
+	 while (x){	 
+		 System.out.print("Please enter in your 4 digit customer ID: ");
+		 passCode = scan.nextInt();
+		 boolean y = customer.checkCustomerPin(passCode);
+		 x = y;
+	 }
+	 
+		 System.out.println("Hi " + customer.getName() + " Please select one of the following options: ");
+		 ATMOptions();
+		 option = scan.nextInt();
+		 
+		 while(true){
+		 if(option == 1){
+			 System.out.println(customer.getAccountAmount());
+		 }else if(option == 2){
+			 System.out.println("How mucn would you like to take out?");
+			 amount = scan.nextInt();
+			 customer.withdrawAmount(amount);
+			 customer.save();
+			 System.out.println("New amount is " + customer.getAccountAmount());
+		 }else if(option == 3){
+			 System.out.println("Please type in a 4 digit pint");
+			 customer.setPin(scan.nextInt());
+		 }else if(option == 4){
+			 System.out.println("Not available at this time");
+		 }else if(option == 5){
+			 System.exit(0);
+		 }else{
+			 ATMOptions();
+		 }
+		 }
+		 
+	}
+}

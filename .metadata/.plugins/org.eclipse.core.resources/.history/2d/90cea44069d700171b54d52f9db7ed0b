@@ -1,0 +1,22 @@
+import java.io.*;
+
+public class FileWriting {
+
+	public static void main(String[] args) throws Exception{
+	
+		File f = new File("C:/Users/Stephen/Desktop/ATM/newfile.txt");
+		if(f.exists()){
+			
+		}else{
+			try{
+				f.createNewFile();
+			}catch(Exception e){
+				System.out.print(e);
+			}
+		}
+		
+		FileWriter fw = new FileWriter(f);
+		
+	}
+
+}

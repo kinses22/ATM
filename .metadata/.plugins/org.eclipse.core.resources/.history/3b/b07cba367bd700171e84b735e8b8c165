@@ -1,0 +1,60 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+
+public class Customers {
+
+	private int pin;
+	private String name;
+	private int accountAmount;
+	
+	public void populateCustomer(String[] details){
+		
+		pin = Integer.parseInt(details[0]);
+		name = details[1];
+		accountAmount = Integer.parseInt(details[0]);
+		
+	}
+	
+	public void getCustomerData() throws Exception {
+		FileReader file = new FileReader("C:/Users/Stephen/Desktop/ATM/ATM.txt");
+		BufferedReader br = new BufferedReader(file);
+		
+		String[] txtArray = {};
+		String txt = "";
+		String line = br.readLine();
+		int counter = 0;
+		while(line != null){
+			
+			txt += line;
+			txtArray[counter] = txt;
+			line = br.readLine();
+			counter++;
+			
+		}
+		br.close();	
+		populateCustomer(txtArray);
+		
+	}
+
+	public int getPin() {
+		return pin;
+	}
+
+	public void setPin(int pin) {
+		this.pin = pin;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public int getAccountAmount() {
+		return accountAmount;
+	}
+
+	public void withdrawAmount(int accountAmount) {
+		this.accountAmount -= accountAmount;
+	}
+	
+	
+}
